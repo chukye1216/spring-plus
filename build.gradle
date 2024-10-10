@@ -46,10 +46,15 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt'
 
     //QueryDSL
-    implementation 'com.querydsl:querydsl-jpa'
-    annotationProcessor 'com.querydsl:querydsl-apt:${querydsl.version}:jpa'
+    implementation "com.querydsl:querydsl-jpa:5.0.0"
+    annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jpa"
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+repositories {
+    mavenCentral()
+}
+

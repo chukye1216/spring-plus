@@ -2,7 +2,6 @@ package org.example.expert.config;
 
 import lombok.RequiredArgsConstructor;
 import org.example.expert.domain.user.enums.UserRole;
-import org.example.statelessspringsecurity.enums.UserRole;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -35,7 +34,7 @@ public class SecurityConfig {
                 .logout(AbstractHttpConfigurer::disable) // LogoutFilter 비활성화
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/signin", "/auth/signup").permitAll()
-                        .requestMatchers("/test").hasAuthority(UserRole.Authority.ADMIN)
+                        .requestMatchers("/test").hasAuthority(UserRole.ADMIN.getAuthority())
                         .anyRequest().authenticated() // 그 외의 API는 JWT가 있어야해요!
                 )
                 .build();
